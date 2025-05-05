@@ -1,5 +1,5 @@
 locals {
-  nic_names = ["nic1", "nic2", "nic3"]
+  nic_names = ["nic0", "nic1", "nic2"]
   security_rules = [
     {
       name                       = "AllowSSH"
