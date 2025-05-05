@@ -3,7 +3,7 @@ output "vm_name_upper_case" {
 }
 
 output "tags_to_string" {
-  value = join(", ", [azurerm_virtual_machine.main["nic1"].tags])
+  value = jsonencode(azurerm_virtual_machine.main["nic1"].tags)
 }
 
 output "vm_ids" {
