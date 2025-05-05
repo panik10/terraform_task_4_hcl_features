@@ -4,11 +4,11 @@ resource "azurerm_resource_group" "example" {
 }
 
 resource "azurerm_virtual_machine" "main" {
-  for_each              = toset(local.nic_names)
-  name                  = "${var.prefix}-vm-${each.key}"
+  count                 = 2
+  name                  = "${var.prefix}-vm-${count.index}"
   location              = azurerm_resource_group.example.location
   resource_group_name   = azurerm_resource_group.example.name
-  network_interface_ids = [azurerm_network_interface.main[each.key].id]
+  network_interface_ids = [azurerm_network_interface.main["nic${count.index}"].id]
   vm_size               = "Standard_B1s"
 
   storage_image_reference {
